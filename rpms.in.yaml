@@ -1,0 +1,67 @@
+contentOrigin:
+  # Repos defined in this list must exactly match the repos defined in the conforma configuration
+  # See https://github.com/release-engineering/rhtap-ec-policy/blob/main/data/known_rpm_repositories.yml
+  repos:
+    - repoid: rhel-9-for-$basearch-appstream-eus-rpms
+      name: Red Hat Enterprise Linux 9 for $basearch - AppStream - Extended Update Support (RPMs)
+      baseurl: https://cdn.redhat.com/content/eus/rhel9/{version}/$basearch/appstream/os
+      gpgcheck: 1
+      gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+      sslverify: 1
+      sslcacert: /etc/rhsm/ca/redhat-uep.pem
+      sslclientkey: $SSL_CLIENT_KEY
+      sslclientcert: $SSL_CLIENT_CERT
+      sslverifystatus: 1
+      varsFromContainerfile: Dockerfile
+      skip_if_unavailable: true
+    - repoid: rhel-9-for-$basearch-baseos-rpms
+      name: Red Hat Enterprise Linux 9 for $basearch - BaseOS (RPMs)
+      baseurl: https://cdn.redhat.com/content/dist/rhel9/{version}/$basearch/baseos/os
+      gpgcheck: 1
+      gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+      sslverify: 1
+      sslcacert: /etc/rhsm/ca/redhat-uep.pem
+      sslclientkey: $SSL_CLIENT_KEY
+      sslclientcert: $SSL_CLIENT_CERT
+      sslverifystatus: 1
+      varsFromContainerfile: Dockerfile
+    - repoid: rhel-9-for-$basearch-baseos-eus-rpms
+      name: Red Hat Enterprise Linux 9 for $basearch - BaseOS - Extended Update Support (RPMs)
+      baseurl: https://cdn.redhat.com/content/eus/rhel9/{version}/$basearch/baseos/os
+      gpgcheck: 1
+      gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+      sslverify: 1
+      sslcacert: /etc/rhsm/ca/redhat-uep.pem
+      sslclientkey: $SSL_CLIENT_KEY
+      sslclientcert: $SSL_CLIENT_CERT
+      sslverifystatus: 1
+      varsFromContainerfile: Dockerfile
+      skip_if_unavailable: true
+    - repoid: rhel-9-for-$basearch-appstream-rpms
+      name: Red Hat Enterprise Linux 9 for $basearch - AppStream (RPMs)
+      baseurl: https://cdn.redhat.com/content/dist/rhel9/{version}/$basearch/appstream/os
+      gpgcheck: 1
+      gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+      sslverify: 1
+      sslcacert: /etc/rhsm/ca/redhat-uep.pem
+      sslclientkey: $SSL_CLIENT_KEY
+      sslclientcert: $SSL_CLIENT_CERT
+      sslverifystatus: 1
+      varsFromContainerfile: Dockerfile
+
+packages:
+  - ethtool
+  - findutils
+  - iproute
+  - iputils
+  - kmod
+  - numactl-libs
+  - procps-ng
+  - python3
+  - realtime-tests
+
+arches:
+  - x86_64
+
+context:
+  containerfile: Dockerfile
